@@ -1,6 +1,8 @@
 import Header from './components/Header';
 import Nav from './components/Nav';
-import Main from './components/Main';
+import Hero from './components/Hero';
+import Specials from './components/Specials';
+import CustomersSay from './components/CustomersSay';
 import Footer from './components/Footer';
 import Home from './components/pages/Home';
 import About from './components/pages/About';
@@ -26,7 +28,9 @@ function App() {
           <Route path='/login' element={<LogIn/>} />
         </Routes>
       </div>
-      <Main/>
+      <Hero/>
+      <Specials/>
+      <CustomersSay/>
       <Footer/>
     </>
   );
