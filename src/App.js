@@ -1,5 +1,6 @@
 import Header from './components/Header';
 import Nav from './components/Nav';
+import Main from './components/Main';
 import Hero from './components/Hero';
 import Specials from './components/Specials';
 import CustomersSay from './components/CustomersSay';
@@ -18,6 +19,7 @@ function App() {
     <>
       <Header/>
       <Nav/>
+      <Main/>
       <div className='container'>
         <Routes>
           <Route path='/' element={<Home/>} />

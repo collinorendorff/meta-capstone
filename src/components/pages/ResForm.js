@@ -1,15 +1,24 @@
 import { useState } from "react";
 
 function ResForm() {
+    const [resTimes, setResTimes] = useState([
+        {label: "17:00", value: "17:00"},
+        {label: "18:00", value: "18:00"},
+        {label: "19:00", value: "19:00"},
+        {label: "20:00", value: "20:00"},
+        {label: "21:00", value: "21:00"},
+        {label: "22:00", value: "22:00"}
+    ]);
+
     const [day, setDay] = useState(new Date());
-    const [resTime, setResTime] = useState("");
+    const [resTime, setResTime] = useState("Select a time");
     const [noGuests, setNoGuests] = useState(1);
     const [occasion, setOccasion] = useState("")
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setDay(new Date());
-        setResTime("17:00");
+        setResTime("Select a time");
         setNoGuests(1);
         setOccasion("");
         console.log("Reservation booked!");
@@ -31,14 +40,11 @@ function ResForm() {
                     setDay(new Date(e.target.value));
                   }}/>
                 <label htmlFor="res-time">Choose time</label>
-                <select id="res-time"
-                value={resTime} onChange={e => setResTime(e.target.value)}>
-                    <option>17:00</option>
-                    <option>18:00</option>
-                    <option>19:00</option>
-                    <option>20:00</option>
-                    <option>21:00</option>
-                    <option>22:00</option>
+                <select id="res-time" value={resTime} onChange={e => setResTime(e.target.value)}>
+                    <option value={"Select a time"}>Select a time</option>
+                    {/* using map function to iterate through array and return
+                    option elements with correct attributes */}
+                    {resTimes.map((resTime) => <option key={resTime.label} value={resTime.value}>{resTime.label}</option>)}
                 </select>
                 <label htmlFor="guests">Number of guests</label>
                 <input type="number" value={noGuests} onChange={e => setNoGuests(e.target.value)}
