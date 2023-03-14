@@ -1,19 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function ResForm() {
-    const [resTimes, setResTimes] = useState([
+function ResForm({resTimes, dispatchResTimes}) {
+    /*const [resTimes, setResTimes] = useState([
         {label: "17:00", value: "17:00"},
         {label: "18:00", value: "18:00"},
         {label: "19:00", value: "19:00"},
         {label: "20:00", value: "20:00"},
         {label: "21:00", value: "21:00"},
         {label: "22:00", value: "22:00"}
-    ]);
+    ]);*/
 
     const [day, setDay] = useState(new Date());
     const [resTime, setResTime] = useState("Select a time");
     const [noGuests, setNoGuests] = useState(1);
-    const [occasion, setOccasion] = useState("")
+    const [occasion, setOccasion] = useState("");
+
+    useEffect(() => {
+        dispatchResTimes(day);
+    }, [day]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
