@@ -15,7 +15,7 @@ import { useReducer } from 'react';
 import './App.css';
 
 function App() {
-  const [resTimes, dispatchResTimes] = useReducer(updateTimes, initializeTimes())
+  const [resTimes, dispatchResTimes] = useReducer(updateTimes, null, initializeTimes);
 
   function initializeTimes() {
     return [
