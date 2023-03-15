@@ -9,15 +9,15 @@ import { BrowserRouter } from 'react-router-dom';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
-  <meta name="description" content="Little Lemon is a Greek and Mediterranean restaurant that serves a variety of authentic dishes, from gyros and souvlaki to hummus and falafel, all made with fresh ingredients and traditional recipes."/>
-  <meta name='og:title' content='Little Lemon Restaurant'/>
-  <meta name='og:description' content='Little Lemon is a Greek and Mediterranean restaurant that serves a variety of authentic dishes, from gyros and souvlaki to hummus and falafel, all made with fresh ingredients and traditional recipes.'/>
-  <meta name='og:image' content='./components/girl-chef-cooking.png'/>
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
+    <meta name="description" content="Little Lemon is a Greek and Mediterranean restaurant that serves a variety of authentic dishes, from gyros and souvlaki to hummus and falafel, all made with fresh ingredients and traditional recipes."/>
+    <meta name='og:title' content='Little Lemon Restaurant'/>
+    <meta name='og:description' content='Little Lemon is a Greek and Mediterranean restaurant that serves a variety of authentic dishes, from gyros and souvlaki to hummus and falafel, all made with fresh ingredients and traditional recipes.'/>
+    <meta name='og:image' content='./components/girl-chef-cooking.png'/>
+    <React.StrictMode>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </React.StrictMode>
   </>
 );
 

@@ -12,8 +12,8 @@ test('Renders label for first form field (date)', () => {
 
 test("initializeTimes function returns correct output", () => {
   render(<App/>);
-  render(<Reservations/>);
-  render(<ResForm/>);
+  /*render(<Reservations/>);
+  render(<ResForm/>);*/
 
   const actual = initializeTimes();
   const expected = [
