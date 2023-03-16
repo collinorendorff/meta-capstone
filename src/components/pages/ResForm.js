@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function ResForm({resTimes, dispatchResTimes}) {
     /*const [resTimes, setResTimes] = useState([
@@ -15,21 +16,32 @@ function ResForm({resTimes, dispatchResTimes}) {
     const [noGuests, setNoGuests] = useState(1);
     const [occasion, setOccasion] = useState("");
 
+    //when the date is selected initially or changes, call API with reducer function
+    //to get new times for that day (seed)
     useEffect(() => {
         dispatchResTimes(day);
-    }, [day]);
+    }, [day, dispatchResTimes]);
 
+    //using useNavigate to make routeChange, called in handleSubmit
+    let navigate = useNavigate();
+    const routeChange = () => {
+        let path = '/res-conf';
+        navigate(path);
+    }
+
+    //resets states and uses routeChange function to navigate to confirmation page on submit
     const handleSubmit = (e) => {
         e.preventDefault();
         setDay(new Date());
         setResTime("Select a time");
         setNoGuests(1);
         setOccasion("");
-        console.log("Reservation booked!");
+        routeChange();
     }
 
     return (
         <>
+        <h1>Book a Reservation:</h1>
             <form style={{ display: "grid", maxWidth: 200, gap: 20 }} onSubmit={handleSubmit}>
                 <label htmlFor="res-date">Choose date</label>
                 <input type="date" id="res-date"

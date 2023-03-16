@@ -8,33 +8,28 @@ import Home from './components/pages/Home';
 import About from './components/pages/About';
 import Menu from './components/pages/Menu';
 import Reservations from './components/pages/Reservations';
+import ResConf from './components/pages/ResConf';
 import OrderOnline from './components/pages/OrderOnline';
 import LogIn from './components/pages/LogIn';
 import { Route, Routes } from 'react-router-dom'
 import { useReducer } from 'react';
+import { fetchAPI, /*submitAPI*/ } from './temp';
 import './App.css';
 
+export function initializeTimes() {
+  const day = new Date();
+  const apiOut = fetchAPI(day);
+  return apiOut;
+}
+
+export function updateTimes(prevState, day) {
+  const updateOut = fetchAPI(day);
+  return updateOut;
+}
+
 function App() {
-  const [resTimes, dispatchResTimes] = useReducer(updateTimes, null, initializeTimes);
+  const [resTimes, dispatchResTimes] = useReducer(updateTimes, initializeTimes());
 
-  function initializeTimes() {
-    const day = new Date();
-    const apiOut = fetchAPI(day);
-    console.log(apiOut);
-    return apiOut;
-  }
-
-  function updateTimes(prevState, day) {
-    return [
-      {label: "17:00", value: "17:00"},
-      {label: "18:00", value: "18:00"},
-      {label: "19:00", value: "19:00"},
-      {label: "20:00", value: "20:00"},
-      {label: "21:00", value: "21:00"},
-      {label: "22:00", value: "22:00"},
-      {label: "23:00", value: "23:00"}
-    ];
-  }
 
   return (
     <>
@@ -46,6 +41,7 @@ function App() {
           <Route path='/about' element={<About/>} />
           <Route path='/menu' element={<Menu/>} />
           <Route path='/reservations' element={<Reservations resTimes={resTimes} dispatchResTimes={dispatchResTimes}/>} />
+          <Route path='/res-conf' element={<ResConf />} />
           <Route path='/order-online' element={<OrderOnline/>} />
           <Route path='/login' element={<LogIn/>} />
         </Routes>
