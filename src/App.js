@@ -13,7 +13,8 @@ import OrderOnline from './components/pages/OrderOnline';
 import LogIn from './components/pages/LogIn';
 import { Route, Routes } from 'react-router-dom'
 import { useReducer } from 'react';
-import { fetchAPI, /*submitAPI*/ } from './temp';
+import { fetchAPI, submitAPI } from './temp';
+import { useNavigate } from 'react-router-dom';
 import './App.css';
 
 export function initializeTimes() {
@@ -27,9 +28,18 @@ export function updateTimes(prevState, day) {
   return updateOut;
 }
 
+
 function App() {
   const [resTimes, dispatchResTimes] = useReducer(updateTimes, initializeTimes());
 
+  let navigate = useNavigate();
+  function submitForm(formData) {
+    const valid = submitAPI(formData);
+    if (valid) {
+      let path = '/res-conf';
+      navigate(path);
+    }
+}
 
   return (
     <>
@@ -40,7 +50,7 @@ function App() {
           <Route path='/' element={<Home/>} />
           <Route path='/about' element={<About/>} />
           <Route path='/menu' element={<Menu/>} />
-          <Route path='/reservations' element={<Reservations resTimes={resTimes} dispatchResTimes={dispatchResTimes}/>} />
+          <Route path='/reservations' element={<Reservations resTimes={resTimes} dispatchResTimes={dispatchResTimes} submitForm={submitForm}/>} />
           <Route path='/res-conf' element={<ResConf />} />
           <Route path='/order-online' element={<OrderOnline/>} />
           <Route path='/login' element={<LogIn/>} />

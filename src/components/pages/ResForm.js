@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
-function ResForm({resTimes, dispatchResTimes}) {
+function ResForm({resTimes, dispatchResTimes, submitForm}) {
     /*const [resTimes, setResTimes] = useState([
         {label: "17:00", value: "17:00"},
         {label: "18:00", value: "18:00"},
@@ -22,12 +21,12 @@ function ResForm({resTimes, dispatchResTimes}) {
         dispatchResTimes(day);
     }, [day, dispatchResTimes]);
 
-    //using useNavigate to make routeChange, called in handleSubmit
+    /*//using useNavigate to make routeChange, called in handleSubmit
     let navigate = useNavigate();
     const routeChange = () => {
         let path = '/res-conf';
         navigate(path);
-    }
+    }*/
 
     //resets states and uses routeChange function to navigate to confirmation page on submit
     const handleSubmit = (e) => {
@@ -36,7 +35,7 @@ function ResForm({resTimes, dispatchResTimes}) {
         setResTime("Select a time");
         setNoGuests(1);
         setOccasion("");
-        routeChange();
+        submitForm(null);
     }
 
     return (
